@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { injectGlobal } from "styled-components";
+import styled, { injectGlobal } from "styled-components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import styled from "styled-components";
 
 import Nav from "./components/Nav";
 
@@ -9,7 +8,6 @@ import About from "./routes/About";
 import Home from "./routes/Home";
 
 injectGlobal`
-
   body {
     margin: 0;
     padding: 0;
@@ -27,7 +25,7 @@ injectGlobal`
   }
 `;
 
-const Title = styled.h1`  
+const Title = styled.h1`
   font-weight: 400;
   text-align: center;
   font-size: 1.5em;
@@ -48,11 +46,11 @@ class App extends Component {
   render() {
     return (
       <Wrap>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Header>
             <Title>Mathias Prenen</Title>
             <Nav />
-            
+
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
           </Header>
